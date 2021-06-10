@@ -2,14 +2,14 @@ package models;
 
 import java.util.List;
 
-public class car {
+public class Car {
     private int arrivalMin;
     private int arrivalMax;
-    private zone zone;
-    private List zoneList;
+    private Zone zone;
+    private ZonePair zoneList;
     private String carName;
 
-    public car(int arrivalMin, int arrivalMax,List zoneList, String carName) {
+    public Car(int arrivalMin, int arrivalMax,ZonePair zoneList, String carName) {
         this.arrivalMin = arrivalMin;
         this.arrivalMax = arrivalMax;
         this.zone = zone;
