@@ -1,5 +1,14 @@
 package models;
 
-public interface line {
+public class line implements Runnable {
 
+
+
+
+    @Override
+    public void run() {
+
+    }
+
+    ;
 }
