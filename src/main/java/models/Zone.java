@@ -29,7 +29,11 @@ public class Zone implements ThreadFactory {
     public int getnumLines(){
         return numLines;
     }
+
+
+
     public int getZoneId(){
         return this.zoneId;
     }
+
 }

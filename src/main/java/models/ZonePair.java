@@ -19,4 +19,12 @@ public class ZonePair {
     public List getAvgTime() {
         return avgTime;
     }
+
+    public void moveUp(){
+        ;
+    }
+    public void moveDown(){
+        ;
+    }
+
 }
