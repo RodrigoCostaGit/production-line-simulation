@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
@@ -22,17 +21,17 @@
                <children>
                   <MenuBar prefHeight="25.0" prefWidth="600.0">
                     <menus>
-                      <Menu mnemonicParsing="false" text="File">
+                      <Menu mnemonicParsing="false" text="save">
                         <items>
                           <MenuItem mnemonicParsing="false" text="Close" />
                         </items>
                       </Menu>
-                      <Menu mnemonicParsing="false" text="Edit">
+                      <Menu mnemonicParsing="false" text="reset to default">
                         <items>
                           <MenuItem mnemonicParsing="false" text="Delete" />
                         </items>
                       </Menu>
-                      <Menu mnemonicParsing="false" text="Help">
+                      <Menu mnemonicParsing="false" text="exit">
                         <items>
                           <MenuItem mnemonicParsing="false" text="About" />
                         </items>
@@ -41,7 +40,7 @@
                   </MenuBar>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   number of lines" wrappingWidth="111.13671875">
                      <FlowPane.margin>
-                        <Insets top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
                   </Text>
                   <Spinner>
@@ -54,13 +53,71 @@
             </FlowPane>
             <FlowPane prefHeight="76.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="106.0" text="add car" />
+                  <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="106.0" text="add car">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin></Button>
                </children>
             </FlowPane>
-            <FlowPane prefHeight="200.0" prefWidth="200.0">
+            <FlowPane prefHeight="47.0" prefWidth="600.0">
                <children>
-                  <ComboBox prefWidth="150.0" promptText="select car" />
-                  <Button mnemonicParsing="false" text="Button">
+                  <ComboBox prefWidth="150.0" promptText="select car">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin></ComboBox>
+                  <Button mnemonicParsing="false" text="delete car">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Button>
+               </children>
+            </FlowPane>
+            <FlowPane prefHeight="33.0" prefWidth="600.0">
+               <children>
+                  <ComboBox prefWidth="150.0" promptText="select zone">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </ComboBox>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="remove zone">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Button>
+               </children>
+            </FlowPane>
+            <FlowPane prefHeight="147.0" prefWidth="600.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   set time interval" wrappingWidth="151.47002601623535">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <Spinner>
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Spinner>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="set time">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Button>
+               </children>
+            </FlowPane>
+            <FlowPane prefHeight="239.0" prefWidth="600.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="    set hours factory is working" wrappingWidth="198.8033390045166">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <Spinner prefHeight="25.0" prefWidth="61.0">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Spinner>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="set hours">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
