@@ -1,8 +1,6 @@
 package models;
 
-import java.util.List;
-
-public class Car {
+public class Car implements EventHandler{
     private int arrivalMin;
     private int arrivalMax;
     private Zone zone;
@@ -17,4 +15,28 @@ public class Car {
         this.carName = carName;
     }
 
+    @Override
+    public void handleEvent(double time) {
+
+    }
+
+    public int getArrivalMin() {
+        return arrivalMin;
+    }
+
+    public int getArrivalMax() {
+        return arrivalMax;
+    }
+
+    public Zone getZone() {
+        return zone;
+    }
+
+    public ZonePair getZoneList() {
+        return zoneList;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
 }
