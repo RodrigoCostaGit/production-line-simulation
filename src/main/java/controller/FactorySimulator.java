@@ -12,7 +12,11 @@ import java.util.PriorityQueue;
 import java.util.Random;
 
 public class FactorySimulator {
-    private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
+    //private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
+//    private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
+    private PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
+
+
     private double time;
     private List<Car> carList = new ArrayList<Car>();
     private Random random= new Random();
@@ -40,9 +44,12 @@ public class FactorySimulator {
 
 
     }
-    public void run() {
+    public void run(int maxTime) {
         while (!this.eventTimes.isEmpty()) {
             this.handleEvent(this.eventTimes.poll());
+            if(time>maxTime){
+                break;
+            }
         }
     }
 
@@ -56,17 +63,21 @@ public class FactorySimulator {
             int timer=0;
             while(timer<time){
                 timer+=random.nextInt(car.getArrivalMax()*24- car.getArrivalMin()*24)+car.getArrivalMin()*24;
-                System.out.println(car.getArrivalMax()+" "+car.getArrivalMin()+" "+timer);
+                //System.out.println(car.getArrivalMax()+" "+car.getArrivalMin()+" "+timer);
                 setEvent(timer,car);
             }
         }
     }
-    public double testclass(){
-        for(Event event:eventTimes){
-            return event.getTime();
-        }
-        return 0;
-
+    public void testclass(){
+//        for(Event event:eventTimes){
+//            return event.getTime();
+//        }
+//        return 0;
+            while(!eventTimes.isEmpty()){
+//                System.out.println(eventTimes.remove().getTime());
+                System.out.println(eventTimes.peek().getTime()+" "+eventTimes.peek().getHandler().getArrivalMin()+ " "+eventTimes.peek().getHandler().getArrivalMax());
+                eventTimes.poll();
+            }
     }
 
     public void addZone(Zone zone){

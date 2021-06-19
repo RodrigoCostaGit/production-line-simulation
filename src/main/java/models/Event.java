@@ -14,7 +14,15 @@ public class Event implements Comparable<Event> {
 
     @Override
     public int compareTo(Event o) {
-        return Double.compare(this.time,o.time);
+        if(this.getTime()>o.getTime()){
+            return 1;
+        }
+        else if(this.getTime()<o.getTime()){
+            return -1;
+        }
+        else{
+            return 0;
+        }
     }
 
     public double getTime(){

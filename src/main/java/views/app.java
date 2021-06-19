@@ -37,19 +37,23 @@ public class app {
         ZonePair zonepair3 = new ZonePair(order3,avgTime3);
 
         //adds the default cars
-        Car car = new Car(3,7,zonepair1,"1");
+        Car car = new Car(3,7,zonepair1,"1",sim);
 
 
-        Car car2 = new Car(4,6,zonepair2,"2");
+        Car car2 = new Car(4,6,zonepair2,"2",sim);
 
 
-        Car car3 = new Car(2,5,zonepair3,"3");
+        Car car3 = new Car(2,5,zonepair3,"3",sim);
 
 
         sim.addCar(car);
         sim.addCar(car2);
         sim.addCar(car3);
         sim.queueCarEvents(8760);
+//        sim.setEvent(1000,car3);
+//        sim.setEvent(200,car);
+//        sim.setEvent(500,car2);
+
         sim.testclass();
 
 
