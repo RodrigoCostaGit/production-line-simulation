@@ -50,6 +50,8 @@ public class Car extends EventHandler {
         }
 
 
+        //need to decrease line counters after leaving a zone   
+
         else if(!zone.isAvailable()){
             zone.queue(this);
         }
