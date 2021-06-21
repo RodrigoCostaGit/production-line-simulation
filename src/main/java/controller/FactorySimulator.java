@@ -11,41 +11,47 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-public class FactorySimulator {
+public class FactorySimulator implements Factory {
     //private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
 //    private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
     private PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
-
-
     private double time;
     private List<Car> carList = new ArrayList<Car>();
     private Random random= new Random();
-    private List<Zone> zoneList;
+    private List<Zone> zoneList = new ArrayList<Zone>();
 
     public FactorySimulator() {
 
+
     }
 
+    @Override
     public void setEvent(double time, EventHandler handler){
         this.eventTimes.add(new Event(time,handler));
     }
 
-    protected void handleEvent(Event e){
+    @Override
+    public void handleEvent(Event e){
         this.time=e.getTime();
         if(e.getHandler()!=null){
             e.getHandler().handleEvent(this.time);
         }
     }
 
-    public void run(double maxTime){
-        while(time<maxTime){
-            this.handleEvent(this.eventTimes.poll());
-        }
+//    @Override
+//    public void run(double maxTime){
+//        while(time<maxTime){
+//            this.handleEvent(this.eventTimes.poll());
+//        }
+//
+//
+//    }
 
-
-    }
+    @Override
     public void run(int maxTime) {
         while (!this.eventTimes.isEmpty()) {
+            System.out.println("one cicle");
+            System.out.println("     ");
             this.handleEvent(this.eventTimes.poll());
             if(time>maxTime){
                 break;
@@ -53,10 +59,12 @@ public class FactorySimulator {
         }
     }
 
+    @Override
     public void addCar(Car car){
         carList.add(car);
     }
 
+    @Override
     public void queueCarEvents(int time){
         int timerTotal;
         for(Car car:carList){
@@ -80,9 +88,16 @@ public class FactorySimulator {
             }
     }
 
+    @Override
     public void addZone(Zone zone){
-
+        this.zoneList.add(zone);
     }
+
+    public Zone getZoneById(int id){
+        return zoneList.get(id-1);
+    }
+
+
 }
 
 

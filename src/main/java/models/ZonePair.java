@@ -3,8 +3,8 @@ package models;
 import java.util.List;
 
 public class ZonePair {
-    private List zoneId;
-    private List avgTime;
+    private List<Integer> zoneId;
+    private List<Double> avgTime;
 
 
     public ZonePair(List zoneId, List avgTime) {
@@ -20,6 +20,16 @@ public class ZonePair {
         return avgTime;
     }
 
+    public int getZoneIdInt(int i){
+        System.out.println(i);
+        return zoneId.get(i-1);
+
+    }
+
+    public double getWaitTimeId(int i){
+//        System.out.println(avgTime.get(i-1));
+        return avgTime.get(i-1);
+    }
     public void moveUp(){
         ;
     }

@@ -1,42 +1,26 @@
 package controller;
 
 import models.Car;
+import models.Event;
+import models.EventHandler;
 import models.Zone;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Factory {
-    private List<Zone> zoneList;
-    private List<Car> carList;
+public interface Factory {
 
-    public Factory() {
+    public void setEvent(double time, EventHandler handler);
 
-    }
+    public void handleEvent(Event e);
 
-    public void addZone(Zone zone) {
-        zoneList.add(zone);
-    }
+    public void addCar(Car car);
 
-    //checks to see if a zone exists
-    public boolean zoneChecker(int num){
-        for(Zone zone : zoneList){
-            if(zone.getZoneId()==num){
-                return true;
-            }
-            else{
-                return false;
-        }
-        }
-        return false;
-    }
+    public void queueCarEvents(int time);
 
-    public void addCar(Car car) {
+    public void addZone(Zone zone);
 
-        this.carList.add(car);
-    }
-
-
+    public void run(int maxTime);
 
 }
