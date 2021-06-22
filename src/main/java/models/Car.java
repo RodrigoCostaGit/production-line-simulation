@@ -35,7 +35,8 @@ public class Car extends EventHandler {
         //checks if it reached the end of the factory,
         //todo: add a way to make queued up cars in zones waiting go off and set a event
         if(counter>zoneList.getZoneId().size()){
-            sim.getZoneById(counter-1).removeFromLine(time);
+            Integer zoneToGo = zoneList.getZoneIdInt(counter-1);
+            sim.getZoneById(zoneToGo).removeFromLine(time);
             System.out.println("finished production of car model "+carName);
             sim.stats.add("carro com object id:"+this.getCarName()+" acabou a produção a "+time);
             return;
@@ -55,12 +56,12 @@ public class Car extends EventHandler {
             sample = sample/2;
             System.out.println("car will take "+sample+" hours on the production line");
             //sets a new event with this object
-            sim.setEvent(sample,this);
+            sim.setEvent(time+sample,this);
             //ocupies the zone
             currentZone.occupy();
             //not pretty, basically checks if its not the first order, if its not it clears a line from the previous zone
             if(counter!=1){
-                sim.getZoneById(counter-1).removeFromLine(time);
+                sim.getZoneById(zoneList.getZoneIdInt(counter-1)).removeFromLine(time);
             }
             counter+=1;
 

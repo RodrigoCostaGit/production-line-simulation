@@ -66,6 +66,7 @@ public class Zone implements ThreadFactory, EventHandler {
             return;
         }
         else{
+            System.out.println("banana");
             sim.setEvent(time,queueCarsWaiting.poll());
         }
     }

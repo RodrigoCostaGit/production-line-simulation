@@ -1,9 +1,6 @@
 package controller;
 
-import models.Car;
-import models.Event;
-import models.EventHandler;
-import models.Zone;
+import models.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,9 +12,10 @@ public interface Factory {
 
     public void handleEvent(Event e);
 
-    public void addCar(Car car);
 
     public void queueCarEvents(int time);
+
+    public void addCar(int arrivalMin, int arrivalMax, ZonePair zoneList, String carName);
 
     public void addZone(Zone zone);
 

@@ -1,10 +1,7 @@
 package controller;
 
 
-import models.Car;
-import models.Event;
-import models.EventHandler;
-import models.Zone;
+import models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,8 @@ public class FactorySimulator implements Factory {
 //    private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
     public PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
     private double time;
-    private List<Car> carList = new ArrayList<Car>();
+//    private List<Car> carList = new ArrayList<Car>();
+    private List carList = new ArrayList<>();
     private Random random= new Random();
     private List<Zone> zoneList = new ArrayList<Zone>();
     public List stats = new ArrayList();
@@ -62,20 +60,35 @@ public class FactorySimulator implements Factory {
         }
     }
 
+//    @Override
+//    public void addCar(Car car){
+//        carList.add(car);
+//    }
+
     @Override
-    public void addCar(Car car){
-        carList.add(car);
+    public void addCar(int arrivalMin, int arrivalMax, ZonePair zoneList, String carName){
+        List lista = new ArrayList();
+        lista.add(arrivalMin);
+        lista.add(arrivalMax);
+        lista.add(zoneList);
+        lista.add(carName);
+        carList.add(lista);
     }
 
     @Override
     public void queueCarEvents(int time){
         int timerTotal;
-        for(Car car:carList){
+        for(Object car:carList){
+            List car2 =(List)car;
+            int arrivalMax =(int)car2.get(1);
+            int arrivalMin =(int)car2.get(0);
+            ZonePair zonepair =(ZonePair)car2.get(2);
+            String carName =(String)car2.get(3);
             int timer=0;
             while(timer<time){
-                timer+=random.nextInt(car.getArrivalMax()*24- car.getArrivalMin()*24)+car.getArrivalMin()*24;
+                timer+=random.nextInt(arrivalMax*24- arrivalMin*24)+arrivalMin*24;
                 //System.out.println(car.getArrivalMax()+" "+car.getArrivalMin()+" "+timer);
-                Car carToAdd =car;
+                Car carToAdd =new Car(arrivalMax,arrivalMin,zonepair,carName,this);
                 setEvent(timer,carToAdd);
             }
         }

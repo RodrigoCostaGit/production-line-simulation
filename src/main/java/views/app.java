@@ -45,11 +45,17 @@ public class app {
         Car car3 = new Car(2,5,zonepair3,"3",sim);
 
 
-        sim.addCar(car);
-        sim.addCar(car2);
-        sim.addCar(car3);
+//        sim.addCar(car);
+//        sim.addCar(car2);
+//        sim.addCar(car3);
+
+        sim.addCar(3,7,zonepair1,"1");
+        sim.addCar(4,6,zonepair2,"2");
+        sim.addCar(2,5,zonepair3,"3");
+
+
         sim.queueCarEvents(8760);
-        //System.out.println(sim.eventTimes.size()+"HIIIIII");
+//        System.out.println(sim.eventTimes.size()+"HIIIIII");
 //        sim.setEvent(1000,car3);
 //        sim.setEvent(200,car);
 //        sim.setEvent(500,car2);
