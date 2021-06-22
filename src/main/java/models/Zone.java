@@ -1,9 +1,12 @@
 package models;
 
+import controller.FactorySimulator;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.ThreadFactory;
 
 public class Zone implements ThreadFactory, EventHandler {
@@ -12,17 +15,19 @@ public class Zone implements ThreadFactory, EventHandler {
     private static int counter=0;
     private int zoneId;
     private int lineCounter=0;
-    private List queue;
+    private Queue<models.EventHandler> queueCarsWaiting;
+    private FactorySimulator sim;
 
 
-    public Zone(int numLines){
+    public Zone(int numLines, FactorySimulator sim){
         this.numLines = numLines;
         this.lineName = lineName;
         Zone.counter++;
         this.zoneId=Zone.counter;
+        this.sim = sim;
+        queueCarsWaiting = new LinkedList<models.EventHandler>();
 
     }
-
 
 
     @Override
@@ -50,13 +55,19 @@ public class Zone implements ThreadFactory, EventHandler {
         lineCounter++;
     }
 
-    public void queue(Car car){
-        this.queue.add(car);
-
+    public void queue(Car car) {
+        this.queueCarsWaiting.add(car);
     }
 
-    public void removeFromLine(){
-        counter--;
+    //todo: make this trigger a event with queue up cars
+    public void removeFromLine(Double time){
+        lineCounter--;
+        if(queueCarsWaiting.peek()==null){
+            return;
+        }
+        else{
+            sim.setEvent(time,queueCarsWaiting.poll());
+        }
     }
     public int getZoneId(){
         return this.zoneId;

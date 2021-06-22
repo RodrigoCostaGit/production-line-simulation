@@ -14,15 +14,20 @@ import java.util.Random;
 public class FactorySimulator implements Factory {
     //private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
 //    private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
-    private PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
+    public PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
     private double time;
     private List<Car> carList = new ArrayList<Car>();
     private Random random= new Random();
     private List<Zone> zoneList = new ArrayList<Zone>();
+    public List stats = new ArrayList();
 
     public FactorySimulator() {
 
 
+    }
+
+    public double getTime(){
+        return time;
     }
 
     @Override
@@ -50,8 +55,6 @@ public class FactorySimulator implements Factory {
     @Override
     public void run(int maxTime) {
         while (!this.eventTimes.isEmpty()) {
-            System.out.println("one cicle");
-            System.out.println("     ");
             this.handleEvent(this.eventTimes.poll());
             if(time>maxTime){
                 break;
@@ -72,7 +75,8 @@ public class FactorySimulator implements Factory {
             while(timer<time){
                 timer+=random.nextInt(car.getArrivalMax()*24- car.getArrivalMin()*24)+car.getArrivalMin()*24;
                 //System.out.println(car.getArrivalMax()+" "+car.getArrivalMin()+" "+timer);
-                setEvent(timer,car);
+                Car carToAdd =car;
+                setEvent(timer,carToAdd);
             }
         }
     }
@@ -83,7 +87,7 @@ public class FactorySimulator implements Factory {
 //        return 0;
             while(!eventTimes.isEmpty()){
 //                System.out.println(eventTimes.remove().getTime());
-                System.out.println(eventTimes.peek().getTime()+" "+eventTimes.peek().getHandler().getArrivalMin()+ " "+eventTimes.peek().getHandler().getArrivalMax());
+                System.out.println(eventTimes.peek().getTime()+" "+eventTimes.peek().getHandler().getCarName());
                 eventTimes.poll();
             }
     }

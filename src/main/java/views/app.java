@@ -19,9 +19,7 @@ public class app {
         //adds the default zones with corresponding lines
         List<Integer> list = Arrays.asList(3,2,4,3,1);
         for(int num : list){
-            System.out.println(num);
-            Zone zone = new Zone(num);
-            System.out.println(zone);
+            Zone zone = new Zone(num,sim);
             sim.addZone(zone);
         }
 
@@ -51,12 +49,19 @@ public class app {
         sim.addCar(car2);
         sim.addCar(car3);
         sim.queueCarEvents(8760);
+        //System.out.println(sim.eventTimes.size()+"HIIIIII");
 //        sim.setEvent(1000,car3);
 //        sim.setEvent(200,car);
 //        sim.setEvent(500,car2);
 
 //        sim.testclass();
-        sim.run(4380);
+        sim.run(8760);
+        Integer counter =0;
+        for(Object str:sim.stats){
+            System.out.println(str);
+            counter++;
+        }
+        System.out.println(counter);
 
 
     }

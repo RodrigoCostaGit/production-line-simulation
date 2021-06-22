@@ -11,4 +11,7 @@ public abstract class EventHandler {
         return 1;
     }
 
+    public String getCarName() {
+        return "j";
+    }
 }
