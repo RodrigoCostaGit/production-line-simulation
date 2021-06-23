@@ -12,7 +12,9 @@ public class Car extends EventHandler {
     private String carName;
     private Zone  currentZone;
     private FactorySimulator sim;
-    private Zone previousZone;
+    private double totalTimeToBeBuilt=0;
+    private double totalWaitingTime=0;
+
 
     public Car(int arrivalMin, int arrivalMax, ZonePair zoneList, String carName, FactorySimulator sim) {
         this.arrivalMin = arrivalMin;
@@ -22,11 +24,14 @@ public class Car extends EventHandler {
         this.carName = carName;
         this.currentZone=null;
         this.sim=sim;
-        this.previousZone=null;
+
+
 
     }
 
     //todo: add statistics
+    //todo:average time for car to be built
+    //todo:
     @Override
     public void handleEvent(double time) {
         System.out.println(" ");
@@ -66,8 +71,6 @@ public class Car extends EventHandler {
             counter+=1;
 
         }
-
-
         //need to decrease line counters after leaving a zone
 
         else if(!currentZone.isAvailable()){
