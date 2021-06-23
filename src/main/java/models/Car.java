@@ -15,6 +15,8 @@ public class Car extends EventHandler {
     private double startTime;
     private double totalTimeToBeBuilt=0;
     private double totalWaitingTime=0;
+    private double TimeWaiting=0;
+    private double timeWaitingHolder;
 
 
     public Car(int arrivalMin, int arrivalMax, ZonePair zoneList, String carName, FactorySimulator sim) {
@@ -87,7 +89,6 @@ public class Car extends EventHandler {
                 startTime=time;
             }
             //checks if it reached the end of the factory,
-            //todo: add a way to make queued up cars in zones waiting go off and set a event
             if(counter>zoneList.getZoneId().size()){
                 Integer zoneToGo = zoneList.getZoneIdInt(counter-1);
                 sim.getZoneById(zoneToGo).removeFromLine(time);
@@ -109,7 +110,7 @@ public class Car extends EventHandler {
                 //sets a new event with this object
                 sim.setEvent(time+sample,this);
                 //ocupies the zone
-                currentZone.occupy();
+                currentZone.occupy(time);
                 //not pretty, basically checks if its not the first order, if its not it clears a line from the previous zone
                 if(counter!=1){
                     sim.getZoneById(zoneList.getZoneIdInt(counter-1)).removeFromLine(time);
@@ -121,6 +122,9 @@ public class Car extends EventHandler {
 
             else if(!currentZone.isAvailable()){
                 currentZone.queue(this);
+                timeWaitingHolder=time;
+
+
 
             }
 
@@ -149,6 +153,9 @@ public class Car extends EventHandler {
         return carName;
     }
 
+    public void addWaitingTime(Double time){
+        totalWaitingTime+=time-timeWaitingHolder;
+    }
 
 
 }
