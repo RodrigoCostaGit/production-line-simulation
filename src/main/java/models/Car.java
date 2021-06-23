@@ -93,6 +93,7 @@ public class Car extends EventHandler {
                 Integer zoneToGo = zoneList.getZoneIdInt(counter-1);
                 sim.getZoneById(zoneToGo).removeFromLine(time);
                 sim.stats.add("carro com object id:"+this.getCarName()+" acabou a produção a "+time);
+                sim.getStatistics().addCar(this);
                 totalTimeToBeBuilt=time-startTime;
                 return;
             }
@@ -157,5 +158,12 @@ public class Car extends EventHandler {
         totalWaitingTime+=time-timeWaitingHolder;
     }
 
+    public double getTotalTimeToBeBuilt(){
+        return totalTimeToBeBuilt;
+    }
+
+    public double getTotalWaitingTime(){
+        return totalWaitingTime;
+    }
 
 }

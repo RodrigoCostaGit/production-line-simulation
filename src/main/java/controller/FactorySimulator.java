@@ -18,6 +18,7 @@ public class FactorySimulator implements Factory {
     private Random random= new Random();
     private List<Zone> zoneList = new ArrayList<Zone>();
     public List stats = new ArrayList();
+    private Statistics stats1 = new Statistics();
 
     public FactorySimulator() {
 
@@ -58,6 +59,7 @@ public class FactorySimulator implements Factory {
                 break;
             }
         }
+
     }
 
 //    @Override
@@ -73,6 +75,7 @@ public class FactorySimulator implements Factory {
         lista.add(zoneList);
         lista.add(carName);
         carList.add(lista);
+        stats1.addCarModel(carName);
     }
 
     @Override
@@ -108,6 +111,7 @@ public class FactorySimulator implements Factory {
     @Override
     public void addZone(Zone zone){
         this.zoneList.add(zone);
+        this.stats1.addZone(zone);
     }
 
     public Zone getZoneById(int id){
@@ -115,6 +119,10 @@ public class FactorySimulator implements Factory {
     }
 
 
+
+    public Statistics getStatistics(){
+        return stats1;
+    }
 }
 
 

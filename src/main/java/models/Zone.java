@@ -32,6 +32,9 @@ public class Zone implements ThreadFactory, EventHandler {
 
     }
 
+    public double getTotalTimeWorking(){
+        return totalTimeWorking;
+    }
 
     @Override
     public Thread newThread(Runnable line) {
