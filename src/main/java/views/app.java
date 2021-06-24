@@ -65,6 +65,15 @@ public class app {
         }
         System.out.println(counter);
 
-
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        sim.getStatistics().getStats("1");
+        System.out.println("");
+        sim.getStatistics().getStats("2");
+        System.out.println("");
+        sim.getStatistics().getStats("3");
+        System.out.println("");
+        sim.getStatistics().getStatsZone();
     }
 }

@@ -17,6 +17,9 @@ public class Zone implements ThreadFactory, EventHandler {
     private int lineCounter=0;
     private Queue<models.EventHandler> queueCarsWaiting;
     private FactorySimulator sim;
+    private double totalTimeWorking;
+    private double timeWorking;
+
 
 
     public Zone(int numLines, FactorySimulator sim){
@@ -29,6 +32,9 @@ public class Zone implements ThreadFactory, EventHandler {
 
     }
 
+    public double getTotalTimeWorking(){
+        return totalTimeWorking;
+    }
 
     @Override
     public Thread newThread(Runnable line) {
@@ -51,8 +57,10 @@ public class Zone implements ThreadFactory, EventHandler {
         ;
     }
 
-    public void occupy(){
+    public void occupy(double time){
         lineCounter++;
+        timeWorking=time;
+
     }
 
     public void queue(Car car) {
@@ -62,12 +70,22 @@ public class Zone implements ThreadFactory, EventHandler {
     //todo: make this trigger a event with queue up cars
     public void removeFromLine(Double time){
         lineCounter--;
+        if(lineCounter==0){
+            totalTimeWorking+=time-timeWorking;
+        }
         if(queueCarsWaiting.peek()==null){
             return;
         }
         else{
-            System.out.println("banana");
+            //previous implementation
+//            sim.setEvent(time,queueCarsWaiting.poll());
+
+            //new implementation to try and record the waiting times
+            models.EventHandler eventCar = queueCarsWaiting.peek();
+            Car car = (Car) eventCar;
+            car.addWaitingTime(time);
             sim.setEvent(time,queueCarsWaiting.poll());
+
         }
     }
     public int getZoneId(){

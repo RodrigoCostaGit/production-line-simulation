@@ -21,7 +21,6 @@ public class ZonePair {
     }
 
     public int getZoneIdInt(int i){
-        System.out.println(i);
         return zoneId.get(i-1);
 
     }
