@@ -1,11 +1,14 @@
 package controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import views.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +19,8 @@ import java.util.logging.Logger;
 
 public class GuiController implements Initializable {
     public Button button;
+    @FXML
+    private TextArea output;
 
     public void settingsButton(){
         System.out.println("entering settings...");
@@ -34,6 +39,15 @@ public class GuiController implements Initializable {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
+    }
+
+    public void StartButton(){
+        System.out.println("starting simulation");
+        FactorySimulator sim=Main.getSim();
+        sim.queueCarEvents(8760);
+        sim.run(8760);
+        output.setText(sim.);
+
     }
 
 

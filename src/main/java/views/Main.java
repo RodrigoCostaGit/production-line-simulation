@@ -1,13 +1,23 @@
 package views;
+import controller.FactorySimulator;
 import controller.GuiController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import models.Car;
+import models.Zone;
+import models.ZonePair;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 
 public class Main extends Application {
+    private static FactorySimulator sim = new FactorySimulator();
+
 
 
     @Override
@@ -21,5 +31,9 @@ public class Main extends Application {
     }
     public static void main(String[] args) {
         launch(args);
+
+    }
+    public static FactorySimulator getSim(){
+        return sim;
     }
 }
