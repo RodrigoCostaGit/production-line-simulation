@@ -1,9 +1,6 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Statistics {
     private Map<String,List<Car>> carDict = new HashMap<String,List<Car>>();
@@ -34,20 +31,42 @@ public class Statistics {
         carDict.get(name).add(car);
     }
 
-    public String getStats(String carId){
+    public List getStats(){
+        //old way
+//        int counter =0;
+//        double buildTime=0;
+//        double waitingTime=0;
+//        for(Car car:carDict.get(carId)){
+//            buildTime+=car.getTotalTimeToBeBuilt();
+//            waitingTime+=car.getTotalWaitingTime();
+//            counter++;
+//        }
+//        System.out.println("o modelo "+carId+" demora em media "+buildTime/counter+" horas");
+//        System.out.println("o modelo "+carId+" fica em espera em media"+waitingTime/counter+" horas");
+//        return ("o modelo "+carId+" demora em media "+Double.toString(buildTime/counter)+" horas");
+
+        // new way, need to return value, and need to iterate every car
+        List carList = new ArrayList();
+        Iterator<Map.Entry<String,List<Car>>> it = carDict.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String,List<Car>> pair = it.next();
         int counter =0;
         double buildTime=0;
         double waitingTime=0;
-        for(Car car:carDict.get(carId)){
+        for(Car car:pair.getValue()){
             buildTime+=car.getTotalTimeToBeBuilt();
             waitingTime+=car.getTotalWaitingTime();
             counter++;
         }
-        System.out.println("o modelo "+carId+" demora em media "+buildTime/counter+" horas");
-        System.out.println("o modelo "+carId+" fica em espera em media"+waitingTime/counter+" horas");
-        return ("o modelo "+carId+" demora em media "+Double.toString(buildTime/counter)+" horas");
+        carList.add("o modelo "+pair.getValue().get(0).getCarName()+" demora em media "+Double.toString(buildTime/counter)+" horas");
 
     }
+        return carList;
+    }
 
+    public void reset(){
+        this.zoneList.clear();
+        this.carDict.clear();
+    }
 
 }

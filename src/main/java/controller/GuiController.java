@@ -14,6 +14,7 @@ import views.Main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,11 +47,28 @@ public class GuiController implements Initializable {
 
     public void StartButton(){
         System.out.println("starting simulation");
+        output.setText("");
         Main.getSim().run(8760);
-        Main.getSim().getStatistics().getStats("1");
-        output.setText(Main.getSim().getStatistics().getStats("1"));
+        //old ways
+//        Main.getSim().getStatistics().getStats("1");
+//        output.setText(Main.getSim().getStatistics().getStats("1")+System.lineSeparator()+Main.getSim().getStatistics().getStats("2"));
+        //new way
+        List<String> lista = Main.getSim().getStatistics().getStats();
+        for(String text:lista){
+            System.out.println(text);
+            output.setText(output.getText()+text+System.lineSeparator());
+        }
 
     }
+
+    public void ResetButton(){
+        Main.getSim().getStatistics().reset();
+        Main.loadDefault();
+        System.out.println("reseting");
+        output.setText("");
+
+    }
+
 
 
     @Override
