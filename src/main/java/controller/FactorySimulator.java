@@ -134,6 +134,9 @@ public class FactorySimulator implements Factory {
     public void setMaxTime(double maxTime){
         this.maxTime=maxTime;
     }
+
+
+
 }
 
 

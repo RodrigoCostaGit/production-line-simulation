@@ -35,6 +35,7 @@ public class Main extends Application {
     }
 
     public static void loadDefault(){
+        sim = new FactorySimulator();
 //        System.out.println("loading default");
         //adds the default zones with corresponding lines
         List<Integer> list = Arrays.asList(3,2,4,3,1);
