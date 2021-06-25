@@ -1,6 +1,7 @@
 package controller;
 
 
+import javafx.concurrent.Task;
 import models.*;
 
 import java.util.ArrayList;
@@ -19,11 +20,13 @@ public class FactorySimulator implements Factory {
     private List<Zone> zoneList = new ArrayList<Zone>();
     public List stats = new ArrayList();
     private Statistics stats1 = new Statistics();
+    private Double maxTime;
 
     public FactorySimulator() {
 
 
     }
+
 
     public double getTime(){
         return time;
@@ -122,6 +125,14 @@ public class FactorySimulator implements Factory {
 
     public Statistics getStatistics(){
         return stats1;
+    }
+
+    public String printt(){
+        return "hi bitch";
+    }
+
+    public void setMaxTime(double maxTime){
+        this.maxTime=maxTime;
     }
 }
 

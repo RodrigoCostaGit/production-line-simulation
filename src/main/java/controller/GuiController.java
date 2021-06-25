@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +23,7 @@ public class GuiController implements Initializable {
     public Button button;
     @FXML
     private TextArea output;
+    private Service<Void> backgroundThread;
 
     public void settingsButton(){
         System.out.println("entering settings...");
@@ -43,16 +46,14 @@ public class GuiController implements Initializable {
 
     public void StartButton(){
         System.out.println("starting simulation");
-        FactorySimulator sim=Main.getSim();
-        sim.queueCarEvents(8760);
-        sim.run(8760);
-        output.setText(sim.);
-
+        Main.getSim().run(8760);
+        Main.getSim().getStatistics().getStats("1");
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("loading default settings");
+        Main.loadDefault();
     }
 }

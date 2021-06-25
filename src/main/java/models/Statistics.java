@@ -34,7 +34,7 @@ public class Statistics {
         carDict.get(name).add(car);
     }
 
-    public void getStats(String carId){
+    public String getStats(String carId){
         int counter =0;
         double buildTime=0;
         double waitingTime=0;
@@ -45,6 +45,8 @@ public class Statistics {
         }
         System.out.println("o modelo "+carId+" demora em media "+buildTime/counter+" horas");
         System.out.println("o modelo "+carId+" fica em espera em media"+waitingTime/counter+" horas");
+        return("o modelo "+carId.toString()+" demora em media "+String.valueOf(buildTime/counter)+" horas");
+
     }
 
 
