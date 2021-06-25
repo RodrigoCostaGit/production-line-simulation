@@ -45,7 +45,7 @@ public class Statistics {
         }
         System.out.println("o modelo "+carId+" demora em media "+buildTime/counter+" horas");
         System.out.println("o modelo "+carId+" fica em espera em media"+waitingTime/counter+" horas");
-        return("o modelo "+carId.toString()+" demora em media "+String.valueOf(buildTime/counter)+" horas");
+        return ("o modelo "+carId+" demora em media "+Double.toString(buildTime/counter)+" horas");
 
     }
 

@@ -48,6 +48,8 @@ public class GuiController implements Initializable {
         System.out.println("starting simulation");
         Main.getSim().run(8760);
         Main.getSim().getStatistics().getStats("1");
+        output.setText(Main.getSim().getStatistics().getStats("1"));
+
     }
 
 

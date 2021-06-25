@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GuiController">
    <children>
-      <TextArea fx:id="output" layoutX="89.0" layoutY="68.0" prefHeight="302.0" prefWidth="417.0" />
+      <TextArea fx:id="output" editable="false" layoutX="89.0" layoutY="68.0" prefHeight="302.0" prefWidth="417.0" />
       <Button layoutX="22.0" layoutY="209.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="525.0" layoutY="209.0" mnemonicParsing="false" text="Button" />
       <Button fx:id="StartButton" layoutX="31.0" layoutY="429.0" mnemonicParsing="false" onAction="#StartButton" prefHeight="50.0" prefWidth="100.0" text="Start" AnchorPane.bottomAnchor="21.0" AnchorPane.topAnchor="429.0" />
