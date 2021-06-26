@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class Main extends Application {
     private static FactorySimulator sim = new FactorySimulator();
-
+    private static int defaultRunTime = 8760;
 
 
 
@@ -31,11 +31,15 @@ public class Main extends Application {
         primaryStage.show();
     }
     public static void main(String[] args) {
+        Main.loadDefault();
         launch(args);
+
     }
 
     public static void loadDefault(){
+
         sim = new FactorySimulator();
+        Zone.resetCounter();
 //        System.out.println("loading default");
         //adds the default zones with corresponding lines
         List<Integer> list = Arrays.asList(3,2,4,3,1);
@@ -43,6 +47,7 @@ public class Main extends Application {
             Zone zone = new Zone(num,sim);
             sim.addZone(zone);
         }
+
 
         List order1 = Arrays.asList(4,1,3);
         List avgTime1 = Arrays.asList(1.10,0.8,0.75);
@@ -68,7 +73,7 @@ public class Main extends Application {
         sim.addCar(3,7,zonepair1,"1");
         sim.addCar(4,6,zonepair2,"2");
         sim.addCar(2,5,zonepair3,"3");
-        sim.queueCarEvents(8760);
+//        sim.queueCarEvents(8760);
 
 
     }
@@ -77,4 +82,11 @@ public class Main extends Application {
         return sim;
     }
 
+    public static int getRunTime(){
+        return defaultRunTime;
+    }
+
+    public static void setRunTime(int horas){
+        defaultRunTime=horas;
+    }
 }

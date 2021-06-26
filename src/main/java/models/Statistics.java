@@ -15,10 +15,13 @@ public class Statistics {
         zoneList.add(zone);
     }
 
-    public void getStatsZone(){
+    public List getStatsZone(){
+        List listToSend = new ArrayList();
         for(Zone zone:zoneList){
             System.out.println("a zona "+zone.getZoneId()+" esteve em operação durante "+(zone.getTotalTimeWorking()*100)/8760+"%");
+            listToSend.add("a zona "+String.valueOf(zone.getZoneId())+" esteve em operação durante "+String.valueOf((zone.getTotalTimeWorking()*100)/8760));
         }
+        return listToSend;
     }
 
     public void addCarModel(String name){
@@ -64,9 +67,18 @@ public class Statistics {
         return carList;
     }
 
-    public void reset(){
+    public void reset() {
         this.zoneList.clear();
-        this.carDict.clear();
-    }
+//        this.carDict.clear();
 
-}
+////        Iterator<Map.Entry<String, List<Car>>> it = carDict.entrySet().iterator();
+////        while (it.hasNext()) {
+////            Map.Entry<String, List<Car>> pair = it.next();
+////            pair.getValue().clear();
+////            System.out.println(pair.getKey());
+////            System.out.println("hi from reset in statistics"+pair.getKey());
+//
+//        }
+
+    }}
+

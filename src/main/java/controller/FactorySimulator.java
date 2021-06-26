@@ -59,6 +59,7 @@ public class FactorySimulator implements Factory {
         while (!this.eventTimes.isEmpty()) {
             this.handleEvent(this.eventTimes.poll());
             if(time>maxTime){
+                System.out.println("finished sim");
                 break;
             }
         }
@@ -79,6 +80,7 @@ public class FactorySimulator implements Factory {
         lista.add(carName);
         carList.add(lista);
         stats1.addCarModel(carName);
+        System.out.println("from factorySim car added");
     }
 
     @Override
@@ -136,6 +138,9 @@ public class FactorySimulator implements Factory {
     }
 
 
+    public List<Zone> getZoneList(){
+        return zoneList;
+    }
 
 }
 

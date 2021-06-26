@@ -18,10 +18,10 @@ public class app {
 
         //adds the default zones with corresponding lines
         List<Integer> list = Arrays.asList(3,2,4,3,1);
-        for(int num : list){
-            Zone zone = new Zone(num,sim);
-            sim.addZone(zone);
-        }
+//        for(int num : list){
+//            Zone zone = new Zone(num,sim);
+//            sim.addZone(zone);
+//        }
 
         List order1 = Arrays.asList(4,1,3);
         List avgTime1 = Arrays.asList(1.10,0.8,0.75);

@@ -29,6 +29,7 @@ public class Zone implements ThreadFactory, EventHandler {
         this.zoneId=Zone.counter;
         this.sim = sim;
         queueCarsWaiting = new LinkedList<models.EventHandler>();
+        System.out.println("hi this is from model zone "+counter);
 
     }
 
@@ -95,5 +96,9 @@ public class Zone implements ThreadFactory, EventHandler {
     @Override
     public void handle(Event event) {
 
+    }
+
+    public static void resetCounter(){
+        counter=0;
     }
 }

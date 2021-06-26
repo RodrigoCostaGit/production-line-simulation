@@ -17,9 +17,10 @@ public class Car extends EventHandler {
     private double totalWaitingTime=0;
     private double TimeWaiting=0;
     private double timeWaitingHolder;
+    private static int nameCounter =1;
 
 
-    public Car(int arrivalMin, int arrivalMax, ZonePair zoneList, String carName, FactorySimulator sim) {
+    public Car(int arrivalMin, int arrivalMax, ZonePair zoneList,String carName, FactorySimulator sim) {
         this.arrivalMin = arrivalMin;
         this.arrivalMax = arrivalMax;
         this.zone = zone;
@@ -27,6 +28,7 @@ public class Car extends EventHandler {
         this.carName = carName;
         this.currentZone=null;
         this.sim=sim;
+
 
 
 
@@ -93,6 +95,7 @@ public class Car extends EventHandler {
                 Integer zoneToGo = zoneList.getZoneIdInt(counter-1);
                 sim.getZoneById(zoneToGo).removeFromLine(time);
                 sim.stats.add("carro com object id:"+this.getCarName()+" acabou a produção a "+time);
+                System.out.println("from car handle event...adding car");
                 sim.getStatistics().addCar(this);
                 totalTimeToBeBuilt=time-startTime;
                 return;
