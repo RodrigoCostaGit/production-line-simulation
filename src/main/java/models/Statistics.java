@@ -61,14 +61,21 @@ public class Statistics {
             waitingTime+=car.getTotalWaitingTime();
             counter++;
         }
-        carList.add("o modelo "+pair.getValue().get(0).getCarName()+" demora em media "+Double.toString(buildTime/counter)+" horas");
+        try{
+            carList.add("o modelo "+pair.getValue().get(0).getCarName()+" demora em media "+Double.toString(buildTime/counter)+" horas");
+
+        }
+        catch (IndexOutOfBoundsException e){
+            System.out.println(pair.getKey()+"try catch block");
+            System.out.println(pair.getValue());
+        }
+//        carList.add("o modelo "+pair.getValue().get(0).getCarName()+" demora em media "+Double.toString(buildTime/counter)+" horas");
 
     }
         return carList;
     }
 
     public void reset() {
-        this.zoneList.clear();
 //        this.carDict.clear();
 
 ////        Iterator<Map.Entry<String, List<Car>>> it = carDict.entrySet().iterator();

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import models.Car;
 import models.Event;
@@ -40,6 +41,10 @@ public class CarAddGui implements Initializable {
     @FXML
     private TextField nameCar;
 
+    @FXML
+            private Button exit;
+
+
     int currentSpinnerRateMin;
     int currentSpinnerRateMax;
     double currentSpinnerRateZone;
@@ -68,6 +73,10 @@ public class CarAddGui implements Initializable {
 
     }
 
+    public void closeButton(){
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+    }
 
 
     @Override
@@ -85,11 +94,7 @@ public class CarAddGui implements Initializable {
         valueFactory2.setValue(1.0);
         spinnerRateZone.setValueFactory(valueFactory2);
 
-//        currentSpinnerRateMin =spinnerRateMin.getValue();
-        //maybe need to add listener
-//        currentSpinnerRateMax = spinnerRateMax.getValue();
 
-//        currentSpinnerRateZone = spinnerRateZone.getValue();
 
 
         ObservableList<Integer> options = FXCollections.observableArrayList();
@@ -101,18 +106,6 @@ public class CarAddGui implements Initializable {
 
         comboboxZones.getItems().addAll(options);
 
-//        Callback<ListView<Zone>, ListCell<Zone>> factory = lv -> new ListCell<Zone>() {
-//
-//            @Override
-//            protected void updateItem(Zone item, boolean empty) {
-//                super.updateItem(item, empty);
-//                setText(empty ? "" : String.valueOf(item.getZoneId()));
-//            }
-//
-//        };
-//
-//        comboboxZones.setCellFactory(factory);
-//        comboboxZones.setButtonCell(factory.call());
 
 
     }

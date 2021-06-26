@@ -15,7 +15,7 @@ public class FactorySimulator implements Factory {
     public PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
     private double time;
 //    private List<Car> carList = new ArrayList<Car>();
-    private List carList = new ArrayList<>();
+    private List<List> carList = new ArrayList<>();
     private Random random= new Random();
     private List<Zone> zoneList = new ArrayList<Zone>();
     public List stats = new ArrayList();
@@ -60,6 +60,9 @@ public class FactorySimulator implements Factory {
             this.handleEvent(this.eventTimes.poll());
             if(time>maxTime){
                 System.out.println("finished sim");
+//                for(Zone zone:zoneList){
+//                    zone.finish(maxTime);
+//                }
                 break;
             }
         }
@@ -140,6 +143,20 @@ public class FactorySimulator implements Factory {
 
     public List<Zone> getZoneList(){
         return zoneList;
+    }
+
+    public void resetStats(){
+        this.stats1=new Statistics();
+        for(List car:carList){
+            String name = (String) car.get(3);
+            stats1.addCarModel(name);
+        }
+        for(Zone zone:zoneList){
+            zone.resetTime();
+            zone.resetLineCounter();
+            stats1.addZone(zone);
+        }
+
     }
 
 }

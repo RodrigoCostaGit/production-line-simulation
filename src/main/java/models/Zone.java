@@ -77,7 +77,7 @@ public class Zone implements ThreadFactory, EventHandler {
         if(queueCarsWaiting.peek()==null){
             return;
         }
-        else{
+        if(queueCarsWaiting.peek() != null){
             //previous implementation
 //            sim.setEvent(time,queueCarsWaiting.poll());
 
@@ -85,8 +85,8 @@ public class Zone implements ThreadFactory, EventHandler {
             models.EventHandler eventCar = queueCarsWaiting.peek();
             Car car = (Car) eventCar;
             car.addWaitingTime(time);
+            System.out.println(queueCarsWaiting.peek().getCarName()+" car resumed production(from Zone-removeFromLine");
             sim.setEvent(time,queueCarsWaiting.poll());
-
         }
     }
     public int getZoneId(){
@@ -100,5 +100,19 @@ public class Zone implements ThreadFactory, EventHandler {
 
     public static void resetCounter(){
         counter=0;
+
+    }
+
+    public void resetTime(){
+        timeWorking=0;
+        totalTimeWorking=0;
+    }
+
+    public void finish(int time){
+        totalTimeWorking+=time-timeWorking;
+    }
+
+    public void resetLineCounter(){
+        this.lineCounter=0;
     }
 }

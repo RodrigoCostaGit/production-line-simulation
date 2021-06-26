@@ -89,15 +89,16 @@ public class Car extends EventHandler {
         public void handleEvent(double time) {
             if(counter==1){
                 startTime=time;
+                System.out.println(this.carName+" entered production");
             }
             //checks if it reached the end of the factory,
             if(counter>zoneList.getZoneId().size()){
                 Integer zoneToGo = zoneList.getZoneIdInt(counter-1);
                 sim.getZoneById(zoneToGo).removeFromLine(time);
                 sim.stats.add("carro com object id:"+this.getCarName()+" acabou a produção a "+time);
-                System.out.println("from car handle event...adding car");
                 sim.getStatistics().addCar(this);
                 totalTimeToBeBuilt=time-startTime;
+                System.out.println(this.carName+" finished production");
                 return;
             }
             //zoneToGo timetowait self explanator
@@ -119,6 +120,7 @@ public class Car extends EventHandler {
                 if(counter!=1){
                     sim.getZoneById(zoneList.getZoneIdInt(counter-1)).removeFromLine(time);
                 }
+                System.out.println(this.carName+" sent to zone "+zoneList.getZoneIdInt(counter));
                 counter+=1;
 
             }
@@ -127,6 +129,7 @@ public class Car extends EventHandler {
             else if(!currentZone.isAvailable()){
                 currentZone.queue(this);
                 timeWaitingHolder=time;
+                System.out.println(this.carName+" couldnt enter the zone, not available, queued up");
 
 
 

@@ -26,6 +26,8 @@ public class GuiController implements Initializable {
     @FXML
     private TextArea output;
     private Service<Void> backgroundThread;
+    @FXML
+    private Button exit;
 
     public void settingsButton(){
         System.out.println("entering settings...");
@@ -65,7 +67,7 @@ public class GuiController implements Initializable {
             System.out.println(text2);
             output.setText(output.getText()+text2+System.lineSeparator());
         }
-        Main.getSim().getStatistics().reset();
+        Main.getSim().resetStats();
 
     }
 
@@ -98,6 +100,10 @@ public class GuiController implements Initializable {
     }
 
 
+    public void exitButton(){
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+    }
 
 
     @Override
@@ -105,6 +111,7 @@ public class GuiController implements Initializable {
         System.out.println("loading default settings");
 //        Main.loadDefault();
     }
+
 
 
 }
