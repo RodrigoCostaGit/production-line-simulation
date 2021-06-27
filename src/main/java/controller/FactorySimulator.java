@@ -10,8 +10,6 @@ import java.util.PriorityQueue;
 import java.util.Random;
 
 public class FactorySimulator implements Factory,Runnable {
-    //private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
-//    private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
     public PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
     private double time;
     private List<List> carList = new ArrayList<>();
@@ -44,14 +42,6 @@ public class FactorySimulator implements Factory,Runnable {
         }
     }
 
-//    @Override
-//    public void run(double maxTime){
-//        while(time<maxTime){
-//            this.handleEvent(this.eventTimes.poll());
-//        }
-//
-//
-//    }
 
     @Override
     public void run(int maxTime) {
@@ -59,19 +49,12 @@ public class FactorySimulator implements Factory,Runnable {
             this.handleEvent(this.eventTimes.poll());
             if(time>maxTime){
                 System.out.println("finished sim");
-//                for(Zone zone:zoneList){
-//                    zone.finish(maxTime);
-//                }
                 break;
             }
         }
 
     }
 
-//    @Override
-//    public void addCar(Car car){
-//        carList.add(car);
-//    }
 
     @Override
     public void addCar(int arrivalMin, int arrivalMax, ZonePair zoneList, String carName){
@@ -130,9 +113,6 @@ public class FactorySimulator implements Factory,Runnable {
         return stats1;
     }
 
-    public String printt(){
-        return "hi bitch";
-    }
 
     public void setMaxTime(int maxTime){
         this.maxTime=maxTime;

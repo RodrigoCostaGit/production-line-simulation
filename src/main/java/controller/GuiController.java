@@ -31,7 +31,6 @@ public class GuiController implements Initializable {
     public Button button,addCar;
     @FXML
     private TextArea output;
-    private Service<Void> backgroundThread;
     @FXML
     private Button exit;
     @FXML
@@ -43,10 +42,7 @@ public class GuiController implements Initializable {
         System.out.println("entering settings...");
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SettingsMenu.fxml"));            /*
-             * if "fx:controller" is not set in fxml
-             * fxmlLoader.setController(NewWindowController);
-             */
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SettingsMenu.fxml"));
             Scene scene = new Scene(root, 600, 400);
             Stage stage = new Stage();
             stage.setTitle("Settings");
@@ -63,21 +59,14 @@ public class GuiController implements Initializable {
         output.setText("");
         Main.getSim().queueCarEvents(Main.getRunTime());
         Main.getSim().setMaxTime(Main.getRunTime());
-//        Main.getSim().run(Main.getRunTime());
         Thread thread = new Thread(Main.getSim());
         thread.run();
-        //old ways
-//        Main.getSim().getStatistics().getStats("1");
-//        output.setText(Main.getSim().getStatistics().getStats("1")+System.lineSeparator()+Main.getSim().getStatistics().getStats("2"));
-        //new way
         List<String> lista = Main.getSim().getStatistics().getStats();
         for(String text:lista){
-            System.out.println(text);
             output.setText(output.getText()+text+System.lineSeparator());
         }
         List<String> lista2 = Main.getSim().getStatistics().getStatsZone();
         for(String text2:lista2){
-            System.out.println(text2);
             output.setText(output.getText()+text2+System.lineSeparator());
         }
         System.out.println(Main.getRunTime());
@@ -101,17 +90,6 @@ public class GuiController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AddCar.fxml"));
             Stage window =(Stage) addCar.getScene().getWindow();
             window.setScene(new Scene(root,600,500));
-            /*
-             * if "fx:controller" is not set in fxml
-             * fxmlLoader.setController(NewWindowController);
-             */
-
-
-//            Scene scene = new Scene(root, 600, 500);
-//            Stage stage = new Stage();
-//            stage.setTitle("Add Car");
-//            stage.setScene(scene);
-//            stage.show();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
@@ -145,7 +123,6 @@ public class GuiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("loading default settings");
-//        Main.loadDefault();
         SpinnerValueFactory<Integer> valueFactory4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100);
         valueFactory4.setValue(1);
         this.spinnerNumLines.setValueFactory(valueFactory4);
@@ -159,7 +136,6 @@ public class GuiController implements Initializable {
             options.add((String) car.get(3));
         }
         deleteCarComboBox.getItems().addAll(options);
-        System.out.println("from initialize gui controller, printion options"+options);
     }
 
 

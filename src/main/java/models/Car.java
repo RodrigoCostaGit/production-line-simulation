@@ -84,12 +84,12 @@ public class Car extends EventHandler {
 //        }
 
 
-        //no print version
+        //comment in the print lines to have console text displaying the whole sim
         @Override
         public void handleEvent(double time) {
             if(counter==1){
                 startTime=time;
-                System.out.println(this.carName+" entered production");
+//                System.out.println(this.carName+" entered production");
             }
             //checks if it reached the end of the factory,
             if(counter>zoneList.getZoneId().size()){
@@ -98,13 +98,12 @@ public class Car extends EventHandler {
                 sim.stats.add("carro com object id:"+this.getCarName()+" acabou a produção a "+time);
                 sim.getStatistics().addCar(this);
                 totalTimeToBeBuilt=time-startTime;
-                System.out.println(this.carName+" finished production");
+//                System.out.println(this.carName+" finished production");
                 return;
             }
             //zoneToGo timetowait self explanator
             Integer zoneToGo = zoneList.getZoneIdInt(counter);
             Double timeToWait = zoneList.getWaitTimeId(counter);
-            //System.out.println(zoneList.getZoneId().size()+"=size "+counter+"counter");
             currentZone= sim.getZoneById(zoneToGo);
             //checks if zone is available
             if(currentZone.isAvailable()){
@@ -120,7 +119,7 @@ public class Car extends EventHandler {
                 if(counter!=1){
                     sim.getZoneById(zoneList.getZoneIdInt(counter-1)).removeFromLine(time);
                 }
-                System.out.println(this.carName+" sent to zone "+zoneList.getZoneIdInt(counter));
+//                System.out.println(this.carName+" sent to zone "+zoneList.getZoneIdInt(counter));
                 counter+=1;
 
             }
@@ -129,7 +128,7 @@ public class Car extends EventHandler {
             else if(!currentZone.isAvailable()){
                 currentZone.queue(this);
                 timeWaitingHolder=time;
-                System.out.println(this.carName+" couldnt enter the zone, not available, queued up");
+//                System.out.println(this.carName+" couldnt enter the zone, not available, queued up");
 
 
 

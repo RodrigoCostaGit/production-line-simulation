@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 public class CarAddGui implements Initializable {
     List order = new ArrayList();
     List avgTime = new ArrayList();
-    ObservableList<Integer> ZonesAddedList = FXCollections.observableArrayList();
+    ObservableList<Object> ZonesAddedList = FXCollections.observableArrayList();
 
 
     @FXML
@@ -37,14 +37,11 @@ public class CarAddGui implements Initializable {
     @FXML
     private Spinner<Double> spinnerRateZone;
 
-//    @FXML
-//    private ListView zoneListView;
-
     @FXML
     private ComboBox comboboxZones;
 
     @FXML
-    private ListView<Integer> zoneListView;
+    private ListView<Object> zoneListView;
 
     @FXML
     private TextField nameCar;
@@ -65,13 +62,13 @@ public class CarAddGui implements Initializable {
         avgTime.add(currentSpinnerRateZone);
         System.out.println(order);
         System.out.println(avgTime);
-        ZonesAddedList.add((int)comboboxZones.getValue());
+        ZonesAddedList.add("zona:"+(int)comboboxZones.getValue()+"    rate:"+(double)spinnerRateZone.getValue());
         zoneListView.setItems(ZonesAddedList);
     }
 
-    public void addCarName(){
-        name=nameCar.getText();
-    }
+//    public void addCarName(){
+//        name=nameCar.getText();
+//    }
 
     public void finishAddCar(){
         name=nameCar.getText();
@@ -85,8 +82,6 @@ public class CarAddGui implements Initializable {
     }
 
     public void closeButton() throws IOException {
-//        Stage stage = (Stage) exit.getScene().getWindow();
-//        stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SettingsMenu.fxml"));
             Stage window =(Stage) exit.getScene().getWindow();

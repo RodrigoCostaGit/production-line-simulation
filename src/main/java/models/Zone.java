@@ -76,14 +76,11 @@ public class Zone implements ThreadFactory, EventHandler {
             return;
         }
         if(queueCarsWaiting.peek() != null){
-            //previous implementation
-//            sim.setEvent(time,queueCarsWaiting.poll());
-
             //new implementation to try and record the waiting times
             models.EventHandler eventCar = queueCarsWaiting.peek();
             Car car = (Car) eventCar;
             car.addWaitingTime(time);
-            System.out.println(queueCarsWaiting.peek().getCarName()+" car resumed production(from Zone-removeFromLine");
+//            System.out.println(queueCarsWaiting.peek().getCarName()+" car resumed production(from Zone-removeFromLine");
             sim.setEvent(time,queueCarsWaiting.poll());
         }
     }
