@@ -3,7 +3,10 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -13,6 +16,7 @@ import models.Zone;
 import models.ZonePair;
 import views.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +25,8 @@ import java.util.ResourceBundle;
 public class CarAddGui implements Initializable {
     List order = new ArrayList();
     List avgTime = new ArrayList();
+    ObservableList<Integer> ZonesAddedList = FXCollections.observableArrayList();
+
 
     @FXML
     private Spinner<Integer> spinnerRateMin;
@@ -31,18 +37,20 @@ public class CarAddGui implements Initializable {
     @FXML
     private Spinner<Double> spinnerRateZone;
 
+//    @FXML
+//    private ListView zoneListView;
 
     @FXML
     private ComboBox comboboxZones;
 
     @FXML
-    private ListView<Zone> zoneListView;
+    private ListView<Integer> zoneListView;
 
     @FXML
     private TextField nameCar;
 
     @FXML
-            private Button exit;
+    private Button exit;
 
 
     int currentSpinnerRateMin;
@@ -57,6 +65,8 @@ public class CarAddGui implements Initializable {
         avgTime.add(currentSpinnerRateZone);
         System.out.println(order);
         System.out.println(avgTime);
+        ZonesAddedList.add((int)comboboxZones.getValue());
+        zoneListView.setItems(ZonesAddedList);
     }
 
     public void addCarName(){
@@ -64,6 +74,7 @@ public class CarAddGui implements Initializable {
     }
 
     public void finishAddCar(){
+        name=nameCar.getText();
         currentSpinnerRateMin =spinnerRateMin.getValue();
         currentSpinnerRateMax = spinnerRateMax.getValue();
         System.out.println(currentSpinnerRateMin);
@@ -73,9 +84,14 @@ public class CarAddGui implements Initializable {
 
     }
 
-    public void closeButton(){
-        Stage stage = (Stage) exit.getScene().getWindow();
-        stage.close();
+    public void closeButton() throws IOException {
+//        Stage stage = (Stage) exit.getScene().getWindow();
+//        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SettingsMenu.fxml"));
+            Stage window =(Stage) exit.getScene().getWindow();
+        window.setScene(new Scene(root,600,400));
+
     }
 
 
@@ -93,8 +109,6 @@ public class CarAddGui implements Initializable {
         SpinnerValueFactory<Double> valueFactory2 = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1,100.0);
         valueFactory2.setValue(1.0);
         spinnerRateZone.setValueFactory(valueFactory2);
-
-
 
 
         ObservableList<Integer> options = FXCollections.observableArrayList();

@@ -19,7 +19,7 @@ public class Statistics {
         List listToSend = new ArrayList();
         for(Zone zone:zoneList){
             System.out.println("a zona "+zone.getZoneId()+" esteve em operação durante "+(zone.getTotalTimeWorking()*100)/8760+"%");
-            listToSend.add("a zona "+String.valueOf(zone.getZoneId())+" esteve em operação durante "+String.valueOf((zone.getTotalTimeWorking()*100)/8760));
+            listToSend.add("a zona "+String.valueOf(zone.getZoneId())+" esteve em operação durante "+String.valueOf((zone.getTotalTimeWorking()*100)/8760)+"%");
         }
         return listToSend;
     }

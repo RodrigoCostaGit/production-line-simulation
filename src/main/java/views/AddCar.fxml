@@ -12,14 +12,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CarAddGui">
    <children>
       <VBox prefHeight="500.0" prefWidth="600.0">
          <children>
             <FlowPane prefHeight="77.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="rate of arrival" wrappingWidth="123.095703125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rate of arrival" wrappingWidth="104.095703125">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
@@ -41,9 +40,15 @@
             </FlowPane>
             <FlowPane prefHeight="75.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="add zone" wrappingWidth="118.048828125" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add zone" wrappingWidth="78.048828125">
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font></Text>
                   <ComboBox fx:id="comboboxZones" prefWidth="150.0" promptText="zones" />
-                  <Spinner fx:id="spinnerRateZone" editable="true" prefHeight="25.0" prefWidth="60.0">
+                  <Spinner fx:id="spinnerRateZone" prefHeight="25.0" prefWidth="60.0">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
@@ -53,21 +58,27 @@
             </FlowPane>
             <FlowPane fx:id="ListViewZones" prefHeight="240.0" prefWidth="600.0">
                <children>
-                  <ListView prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="zoneListView" prefHeight="210.0" prefWidth="200.0">
+                     <FlowPane.margin>
+                        <Insets left="20.0" />
+                     </FlowPane.margin></ListView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter car name">
                      <FlowPane.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                        <Insets bottom="30.0" left="50.0" top="30.0" />
                      </FlowPane.margin>
                   </Text>
                   <TextField fx:id="nameCar" prefHeight="25.0" prefWidth="73.0">
                      <FlowPane.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                        <Insets bottom="30.0" left="5.0" right="5.0" top="30.0" />
                      </FlowPane.margin>
                   </TextField>
-                  <Button fx:id="addCarButtonName" mnemonicParsing="false" onAction="#addCarName" text="add" />
+                  <Button fx:id="addCarButtonName" mnemonicParsing="false" onAction="#addCarName" text="add">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin></Button>
                </children>
             </FlowPane>
-            <FlowPane prefHeight="151.0" prefWidth="600.0">
+            <FlowPane prefHeight="107.0" prefWidth="600.0">
                <children>
                   <Button fx:id="finishAddingCarButton" mnemonicParsing="false" onAction="#finishAddCar" prefHeight="25.0" prefWidth="79.0" text="add car">
                      <FlowPane.margin>

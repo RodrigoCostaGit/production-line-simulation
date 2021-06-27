@@ -9,18 +9,17 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-public class FactorySimulator implements Factory {
+public class FactorySimulator implements Factory,Runnable {
     //private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
 //    private PriorityQueue<Event> eventTimes = new PriorityQueue<>();
     public PriorityQueue<Event> eventTimes = new PriorityQueue<Event>(new EventComparator());
     private double time;
-//    private List<Car> carList = new ArrayList<Car>();
     private List<List> carList = new ArrayList<>();
     private Random random= new Random();
     private List<Zone> zoneList = new ArrayList<Zone>();
     public List stats = new ArrayList();
     private Statistics stats1 = new Statistics();
-    private Double maxTime;
+    private int maxTime;
 
     public FactorySimulator() {
 
@@ -83,7 +82,6 @@ public class FactorySimulator implements Factory {
         lista.add(carName);
         carList.add(lista);
         stats1.addCarModel(carName);
-        System.out.println("from factorySim car added");
     }
 
     @Override
@@ -136,7 +134,7 @@ public class FactorySimulator implements Factory {
         return "hi bitch";
     }
 
-    public void setMaxTime(double maxTime){
+    public void setMaxTime(int maxTime){
         this.maxTime=maxTime;
     }
 
@@ -157,6 +155,35 @@ public class FactorySimulator implements Factory {
             stats1.addZone(zone);
         }
 
+    }
+
+    @Override
+    public void run() {
+        while (!this.eventTimes.isEmpty()) {
+            this.handleEvent(this.eventTimes.poll());
+            if(time>maxTime){
+                System.out.println("finished sim");
+//                for(Zone zone:zoneList){
+//                    zone.finish(maxTime);
+//                }
+                break;
+            }
+        }
+
+    }
+
+    public List<List> getCar(){
+        return this.carList;
+    }
+
+    public void deleteCar(String name){
+        carList.removeIf(b->b.get(3).equals(name));
+//        for(List<List> car:carList){
+//            if(car.get(3).equals(name)){
+//
+//            };
+//
+//        }
     }
 
 }

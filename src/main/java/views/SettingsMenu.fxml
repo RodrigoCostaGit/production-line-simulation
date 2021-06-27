@@ -42,12 +42,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
                   </Text>
-                  <Spinner>
+                  <Spinner fx:id="spinnerNumLines" editable="true" prefHeight="25.0" prefWidth="149.0">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
                   </Spinner>
-                  <Button mnemonicParsing="false" text="add" />
+                  <Button fx:id="addZone" mnemonicParsing="false" onAction="#addZoneButton" text="add Zone" />
                </children>
             </FlowPane>
             <FlowPane prefHeight="76.0" prefWidth="600.0">
@@ -60,31 +60,18 @@
             </FlowPane>
             <FlowPane prefHeight="47.0" prefWidth="600.0">
                <children>
-                  <ComboBox prefWidth="150.0" promptText="select car">
+                  <ComboBox fx:id="deleteCarComboBox" prefWidth="150.0" promptText="select car">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin></ComboBox>
-                  <Button mnemonicParsing="false" text="delete car">
+                  <Button fx:id="deleteCarButton" mnemonicParsing="false" onAction="#deleteCar" text="delete car">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
                   </Button>
                </children>
             </FlowPane>
-            <FlowPane prefHeight="33.0" prefWidth="600.0">
-               <children>
-                  <ComboBox prefWidth="150.0" promptText="select zone">
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ComboBox>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="remove zone">
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </Button>
-               </children>
-            </FlowPane>
+            <FlowPane prefHeight="33.0" prefWidth="600.0" />
             <FlowPane prefHeight="58.0" prefWidth="600.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   set time interval" wrappingWidth="151.47002601623535">
@@ -92,12 +79,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
                   </Text>
-                  <Spinner>
+                  <Spinner fx:id="SpinnerTimeInterval" editable="true">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>
                   </Spinner>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="set time">
+                  <Button fx:id="SetTimeButton" mnemonicParsing="false" onAction="#changeTime" prefHeight="25.0" prefWidth="76.0" text="set time">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </FlowPane.margin>

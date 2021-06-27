@@ -29,8 +29,6 @@ public class Zone implements ThreadFactory, EventHandler {
         this.zoneId=Zone.counter;
         this.sim = sim;
         queueCarsWaiting = new LinkedList<models.EventHandler>();
-        System.out.println("hi this is from model zone "+counter);
-
     }
 
     public double getTotalTimeWorking(){
