@@ -35,20 +35,6 @@ public class Statistics {
     }
 
     public List getStats(){
-        //old way
-//        int counter =0;
-//        double buildTime=0;
-//        double waitingTime=0;
-//        for(Car car:carDict.get(carId)){
-//            buildTime+=car.getTotalTimeToBeBuilt();
-//            waitingTime+=car.getTotalWaitingTime();
-//            counter++;
-//        }
-//        System.out.println("o modelo "+carId+" demora em media "+buildTime/counter+" horas");
-//        System.out.println("o modelo "+carId+" fica em espera em media"+waitingTime/counter+" horas");
-//        return ("o modelo "+carId+" demora em media "+Double.toString(buildTime/counter)+" horas");
-
-        // new way, need to return value, and need to iterate every car
         List carList = new ArrayList();
         Iterator<Map.Entry<String,List<Car>>> it = carDict.entrySet().iterator();
         while(it.hasNext()){
@@ -62,30 +48,19 @@ public class Statistics {
             counter++;
         }
         try{
-            carList.add("o modelo "+pair.getValue().get(0).getCarName()+" demora em media "+Double.toString(buildTime/counter)+" horas");
+            carList.add("o modelo "+pair.getValue().get(0).getCarName()+" demora em média "+Double.toString(buildTime/counter)+" horas");
+            carList.add("o modelo "+pair.getValue().get(0).getCarName()+" fica a espera em média "+Double.toString(waitingTime/counter)+" horas");
 
         }
         catch (IndexOutOfBoundsException e){
             System.out.println(pair.getKey()+"try catch block");
             System.out.println(pair.getValue());
         }
-//        carList.add("o modelo "+pair.getValue().get(0).getCarName()+" demora em media "+Double.toString(buildTime/counter)+" horas");
 
     }
         return carList;
     }
 
-    public void reset() {
-//        this.carDict.clear();
 
-////        Iterator<Map.Entry<String, List<Car>>> it = carDict.entrySet().iterator();
-////        while (it.hasNext()) {
-////            Map.Entry<String, List<Car>> pair = it.next();
-////            pair.getValue().clear();
-////            System.out.println(pair.getKey());
-////            System.out.println("hi from reset in statistics"+pair.getKey());
-//
-//        }
-
-    }}
+    }
 

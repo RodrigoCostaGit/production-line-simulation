@@ -25,6 +25,21 @@ public class FactorySimulator implements Factory,Runnable {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public double getTime(){
         return time;
     }
@@ -143,9 +158,6 @@ public class FactorySimulator implements Factory,Runnable {
             this.handleEvent(this.eventTimes.poll());
             if(time>maxTime){
                 System.out.println("finished sim");
-//                for(Zone zone:zoneList){
-//                    zone.finish(maxTime);
-//                }
                 break;
             }
         }

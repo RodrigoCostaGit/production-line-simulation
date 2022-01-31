@@ -109,9 +109,7 @@ public class CarAddGui implements Initializable {
         ObservableList<Integer> options = FXCollections.observableArrayList();
 
         for(Zone event:Main.getSim().getZoneList()){
-            options.add(event.getZoneId());
-            System.out.println(event.getZoneId());
-        }
+            options.add(event.getZoneId()); }
 
         comboboxZones.getItems().addAll(options);
 

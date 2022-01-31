@@ -21,6 +21,7 @@ public class Main extends Application {
 
 
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         //this line doesnt work, cant find gui.fxml edit:needed to include fxml files to the resource directory, added in the pom file

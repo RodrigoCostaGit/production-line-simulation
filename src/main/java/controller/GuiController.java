@@ -63,13 +63,13 @@ public class GuiController implements Initializable {
         thread.run();
         List<String> lista = Main.getSim().getStatistics().getStats();
         for(String text:lista){
-            output.setText(output.getText()+text+System.lineSeparator());
+            output.setText(output.getText()+text+System.lineSeparator()+System.lineSeparator());
         }
         List<String> lista2 = Main.getSim().getStatistics().getStatsZone();
         for(String text2:lista2){
-            output.setText(output.getText()+text2+System.lineSeparator());
+            output.setText(output.getText()+text2+System.lineSeparator()+System.lineSeparator());
         }
-        System.out.println(Main.getRunTime());
+
         Main.getSim().resetStats();
 
     }
